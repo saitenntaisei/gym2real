@@ -1,6 +1,4 @@
 #include <controller/controller_node.hpp>
-#include <driver/imu_driver.hpp>
-#include <driver/motor_driver.hpp>
 #include <chrono>
 
 using std::placeholders::_1;
@@ -141,8 +139,6 @@ int main(int argc, char **argv)
     // Initialize node
     rclcpp::init(argc, argv);
     auto controller = std::make_shared<ControllerNode>();
-    auto motor_driver = std::make_shared<MotorDriver>(32, 33, 11, 23, 12, 24);
-    auto imu_driver = std::make_shared<IMUDriver>(19, 3, 5, 0x68);
 
     // Set real-time priority
     struct sched_param param;
@@ -162,8 +158,7 @@ int main(int argc, char **argv)
     // Create static executor
     rclcpp::executors::StaticSingleThreadedExecutor exec;
     exec.add_node(controller->get_node_base_interface());
-    exec.add_node(motor_driver->get_node_base_interface());
-    exec.add_node(imu_driver->get_node_base_interface());
+
     exec.spin();
     rclcpp::shutdown();
     return 0;

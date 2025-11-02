@@ -16,7 +16,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(yaml-cpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(driver REQUIRED)
 
 include_directories(
     include
