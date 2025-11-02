@@ -44,7 +44,7 @@ install(DIRECTORY include
     DESTINATION include/
 )
 
-ament_target_dependencies(controller rclcpp sensor_msgs driver)
+ament_target_dependencies(controller rclcpp sensor_msgs)
 
 if (BUILD_TESTING)
     find_package(ament_lint_auto REQUIRED)
